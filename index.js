@@ -1,3 +1,5 @@
+const func = require('./puzzle');
+
 exports.handler = async (event) => {
     // TODO implement
     var response = {
@@ -10,7 +12,7 @@ exports.handler = async (event) => {
     if (event.queryStringParameters){
         check = event.queryStringParameters.q;
     }
-    console.log(check, event.queryStringParameters);
+    //console.log(check, event.queryStringParameters);
     switch (check) {
         case 'Ping':
             // code
@@ -46,7 +48,7 @@ exports.handler = async (event) => {
             break;
         case 'Referrer':
             // code
-            response.body = 'Prashant Nigam';
+            response.body = 'LinkedIn';
             break;
         case 'Degree':
             // code
@@ -54,11 +56,12 @@ exports.handler = async (event) => {
             break;
         case 'Puzzle':
             // code
-            response.body = 'First, if = sign is encountered all of the cells containing - sign in the diagonal from left to right side are changed to =, then all < and > signs are checked and adjecnet diagonal cells containing - sign are changed to a sign opposite to current one (so if < sign has - as a diagonally adjecent cell - will be converted to >)';
+            response.body = func(event.queryStringParameters.d);
             break;
         case 'Source':
             // code
-            response.body = 'N/A';
+            response.body = 'https://github.com/BNewalkar/brealtime';
+            break;
         default:
             // code
             response.body = 'OK';
